@@ -40,9 +40,9 @@ def process_image(image_path):
         roi = strip[y:y + h, x:x + w]
 
     # Display the image
-    img = roi
-    cv2.imshow('image', img)
-    cv2.waitKey(0)
+    # img = roi
+    # cv2.imshow('image', img)
+    # cv2.waitKey(0)
     # Define the number of color blocks on the strip and the block size
     num_blocks = 10
     block_width = 70
