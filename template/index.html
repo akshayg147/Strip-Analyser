@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Process Urine Strip Image</title>
+</head>
+<body>
+{% if result %}
+<h1>here I am bro</h1>
+{% endif %}
+  <h1>Process Urine Strip Image</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>
+      Upload Image File:
+      <input type="file" name="image_file" />
+    </label>
+    <br />
+    <button type="submit" name="'submit">Submit</button>
+  </form>
+  <hr />
+  <h2>Result</h2>
+  {% if result %}
+  <table>
+    <thead>
+      <tr>
+        <th>Test Name</th>
+        <th>Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for test,result in result.items %}
+      <tr>
+        <td>{{ test }}</td>
+        <td style="background-color: rgb({{ result.0 }}, {{ result.1 }}, {{ result.2 }})">&nbsp;</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+  <table id="result-table"></table>
+  <script src="{% static '/js/process_image.js' %}"></script>
+</body>
+</html>
